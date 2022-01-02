@@ -9,7 +9,6 @@
 #ifndef UTILS_H_
 #define UTILS_H_
 
-
 typedef struct {
     sfClock *movement;
     sfClock *animate;

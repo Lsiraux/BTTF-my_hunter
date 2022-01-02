@@ -19,5 +19,4 @@ typedef struct {
     sfVector2f scaleback;
 } vect_t;
 
-
-#endif /* !VECT_H_ */
+#endif

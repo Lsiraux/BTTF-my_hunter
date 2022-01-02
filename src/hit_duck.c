@@ -5,12 +5,10 @@
 ** hit_duck
 */
 
- #include "my.h"
+#include "my.h"
 
 void check_hitbox(vect_t *vector, sfRenderWindow *window, sfSprite *sprite)
 {
-    // printf("%d\n", vector->pos.x);
-    // printf("%d\n", vector->pos.y);
     srand(time(0));
     sfVector2f reset;
     reset.x = 0;
@@ -23,8 +21,6 @@ void check_hitbox(vect_t *vector, sfRenderWindow *window, sfSprite *sprite)
     {
         sfSprite_setPosition(sprite, reset);
         init_vect(vector);
-    }
-    else {
+    } else
         return;
-    }
 }

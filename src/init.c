@@ -7,11 +7,9 @@
 
 #include "my.h"
 
-
-
 sfText *set_text(vect_t *vector, utils_t *utils)
 {
-    utils->font = sfFont_createFromFile("bitmap.TTF");
+    utils->font = sfFont_createFromFile("bitmap.ttf");
     utils->score = sfText_create();
     sfText_setPosition(utils->score, vector->textpos);
     sfText_setColor(utils->score, sfWhite);
@@ -34,17 +32,20 @@ sfSprite *set_bird(vect_t *vector, utils_t *utils)
     utils->sprite = set_sprite(vector->scale, vector->pos, utils->texture);
 }
 
-sfSprite *set_background(vect_t *vector, utils_t *utils)
+void set_background(vect_t *vector, utils_t *utils)
 {
-    utils->background = set_sprite(vector->scaleback, vector->posback, utils->textureback);
-    // return utils->background;
+    utils->background = set_sprite(vector->scaleback, \
+    vector->posback, utils->textureback);
 }
 
-sfRenderWindow *create_renderwindow(unsigned int width, unsigned int height, unsigned int bpp, char *title)
+sfRenderWindow *create_renderwindow(unsigned int width,
+                                    unsigned int height,
+                                    unsigned int bpp, char *title)
 {
     sfVideoMode video_mode = {width, height, bpp};
 
-    return (sfRenderWindow_create(video_mode, title, sfResize | sfClose, NULL));
+    return (sfRenderWindow_create(video_mode, title, \
+    sfResize | sfClose, NULL));
 }
 
 void init_clock(utils_t *clock)
@@ -52,4 +53,3 @@ void init_clock(utils_t *clock)
     clock->animate = sfClock_create();
     clock->movement = sfClock_create();
 }
-
