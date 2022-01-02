@@ -15,6 +15,7 @@ SRC    =    ./src/main.c    \
 		./src/my_putstr.c \
 		./src/init.c \
 		./src/init_vect.c \
+		./src/init_second.c \
 
 OBJ    =    $(SRC:.c=.o)
 

@@ -15,11 +15,13 @@ typedef struct {
     sfClock *animate;
     sfEvent event;
     sfTexture *texture;
+    sfTexture *textureback;
     sfTexture *backimage;
     sfIntRect rect;
     sfText *score;
     sfFont *font;
     sfSprite *sprite;
+    sfSprite *spriteback;
     sfSprite *background;
 } utils_t;
 

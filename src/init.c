@@ -13,26 +13,42 @@ sfText *set_text(vect_t *vector, utils_t *utils)
 {
     utils->font = sfFont_createFromFile("bitmap.TTF");
     utils->score = sfText_create();
-    sfText_setPosition(utils->score, vector->pos);
+    sfText_setPosition(utils->score, vector->textpos);
     sfText_setColor(utils->score, sfWhite);
-    sfText_setScale(utils->score, vector->scale);
+    sfText_setScale(utils->score, vector->textscale);
     sfText_setString(utils->score, my_strcat("points: ", "0"));
     sfText_setFont(utils->score, utils->font);
 }
 
-sfSprite *set_sprite(vect_t *vector, utils_t *utils)
+sfSprite *set_sprite(sfVector2f scale, sfVector2f pos, sfSprite *sprite, sfTexture *texture)
 {
-    utils->sprite = sfSprite_create();
+    sprite = sfSprite_create();
 
-    sfSprite_setScale(utils->sprite, vector->scale);
-    sfSprite_setPosition(utils->sprite, vector->pos);
-    sfSprite_setTexture(utils->sprite, utils->texture, sfFalse);
+    sfSprite_setScale(sprite, scale);
+    sfSprite_setPosition(sprite, pos);
+    sfSprite_setTexture(sprite, texture, sfFalse);
+    return sprite;
+}
+
+sfSprite *backsprite(vect_t *vector, utils_t *utils, sfTexture *texture)
+{
+    utils->spriteback = sfSprite_create();
+
+    sfSprite_setScale(utils->spriteback, vector->scaleback);
+    sfSprite_setPosition(utils->spriteback, vector->posback);
+    sfSprite_setTexture(utils->spriteback, texture, sfFalse);
+    return utils->spriteback;
+}
+
+sfSprite *set_bird(vect_t *vector, utils_t *utils)
+{
+    utils->sprite = 
 }
 
 sfSprite *set_background(vect_t *vector, utils_t *utils)
 {
-    utils->backimage = sfTexture_createFromFile("background_sheet.png", NULL);
-    utils->background = set_sprite(vector, utils);
+    utils->background = set_sprite(vector, utils, utils->textureback);
+    // return utils->background;
 }
 
 sfRenderWindow *create_renderwindow(unsigned int width, unsigned int height, unsigned int bpp, char *title)

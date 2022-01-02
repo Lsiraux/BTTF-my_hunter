@@ -16,8 +16,8 @@ void init_vect(vect_t *vector)
     vector->pos.y = 760;
     vector->move.x = 6;
     vector->move.y = 0;
-    vector->scale.x = 0.1;
-    vector->scale.y = 0.1;
+    vector->scale.x = 1;
+    vector->scale.y = 1;
     vector->posback.x = 0;
     vector->posback.y = 0;
     vector->scaleback.x = 1;
