@@ -16,6 +16,7 @@ SRC    =    ./src/main.c    \
 		./src/init.c \
 		./src/init_vect.c \
 		./src/init_second.c \
+		./src/hit_duck.c \
 
 OBJ    =    $(SRC:.c=.o)
 

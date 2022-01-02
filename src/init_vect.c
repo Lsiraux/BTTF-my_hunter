@@ -8,12 +8,13 @@
 
 void init_vect(vect_t *vector)
 {
+    srand(time(0));
     vector->textpos.x = 1680;
     vector->textpos.y = 30;
     vector->textscale.x = 1;
     vector->textscale.y = 1;
-    vector->pos.x = 300;
-    vector->pos.y = 760;
+    vector->pos.x = 0;
+    vector->pos.y = rand() % 900;
     vector->move.x = 6;
     vector->move.y = 0;
     vector->scale.x = 1;

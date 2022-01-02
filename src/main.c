@@ -53,18 +53,22 @@ void display_game()
     sfSprite_setTextureRect(utils.sprite, utils.rect);
     sfRenderWindow_setFramerateLimit(window, 120);
     while (sfRenderWindow_isOpen(window)) {
-    if (sfClock_getElapsedTime(utils.movement).microseconds > 1) {
-        sprite_move(&vector, &utils);
-        sfClock_restart(utils.movement);
-    }
-    if (sfClock_getElapsedTime(utils.animate).microseconds > 100000) {
-        modify_rect(&utils);
-        sfClock_restart(utils.animate);
-    }
+        if (sfClock_getElapsedTime(utils.movement).microseconds > 1) {
+            sprite_move(&vector, &utils);
+            sfClock_restart(utils.movement);
+        }
+        if (sfClock_getElapsedTime(utils.animate).microseconds > 100000) {
+            modify_rect(&utils);
+            sfClock_restart(utils.animate);
+        }
     while (sfRenderWindow_pollEvent(window, &utils.event)) {
         if (utils.event.type == sfEvtClosed) {
             sfRenderWindow_close(window);
             sfClock_destroy(utils.movement);
+            sfClock_destroy(utils.animate);
+        }
+        if (utils.event.type == sfEvtMouseButtonPressed) {
+            check_hitbox(&vector, window, utils.sprite);
         }
     }
     sfRenderWindow_clear(window, sfBlack);

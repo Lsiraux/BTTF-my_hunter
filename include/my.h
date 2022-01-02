@@ -38,6 +38,7 @@ int my_put_nbr(int nb);
 void sprite_move(vect_t *vector, utils_t *utils);
 char *decimaltobase(int nbr);
 void init_vect(vect_t *vector);
+void check_hitbox(vect_t *vector, sfRenderWindow *window, sfSprite *sprite);
 void init_clock(utils_t *clock);
 sfRenderWindow *create_renderwindow(unsigned int width, unsigned int height, unsigned int bpp, char *title);
 

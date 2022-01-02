@@ -13,9 +13,9 @@ void sprite_move(vect_t *vector, utils_t *utils)
     sfVector2f reset = {0, (rand() % 970)};
     if (vector->pos.x >= 1920) {
         sfSprite_setPosition(utils->sprite, reset);
-        // initv();
+        init_vect(vector);
     }
-    else 
+    else
         vector->pos.x = (vector->pos.x) + (vector->move.x);
         sfSprite_move(utils->sprite, vector->move);
 }
