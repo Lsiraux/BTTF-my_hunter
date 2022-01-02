@@ -20,34 +20,23 @@ sfText *set_text(vect_t *vector, utils_t *utils)
     sfText_setFont(utils->score, utils->font);
 }
 
-sfSprite *set_sprite(sfVector2f scale, sfVector2f pos, sfSprite *sprite, sfTexture *texture)
+sfSprite *set_sprite(sfVector2f scale, sfVector2f pos, sfTexture *texture)
 {
-    sprite = sfSprite_create();
-
+    sfSprite *sprite = sfSprite_create();
     sfSprite_setScale(sprite, scale);
     sfSprite_setPosition(sprite, pos);
     sfSprite_setTexture(sprite, texture, sfFalse);
     return sprite;
 }
 
-sfSprite *backsprite(vect_t *vector, utils_t *utils, sfTexture *texture)
-{
-    utils->spriteback = sfSprite_create();
-
-    sfSprite_setScale(utils->spriteback, vector->scaleback);
-    sfSprite_setPosition(utils->spriteback, vector->posback);
-    sfSprite_setTexture(utils->spriteback, texture, sfFalse);
-    return utils->spriteback;
-}
-
 sfSprite *set_bird(vect_t *vector, utils_t *utils)
 {
-    utils->sprite = 
+    utils->sprite = set_sprite(vector->scale, vector->pos, utils->texture);
 }
 
 sfSprite *set_background(vect_t *vector, utils_t *utils)
 {
-    utils->background = set_sprite(vector, utils, utils->textureback);
+    utils->background = set_sprite(vector->scaleback, vector->posback, utils->textureback);
     // return utils->background;
 }
 

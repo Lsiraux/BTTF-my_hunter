@@ -47,14 +47,15 @@ void display_game()
     init_texture(&utils);
     init_vect(&vector);
     set_rect(&utils);
+    set_bird(&vector, &utils);
     set_background(&vector, &utils);
     set_text(&vector, &utils);
     sfSprite_setTextureRect(utils.sprite, utils.rect);
     sfRenderWindow_setFramerateLimit(window, 120);
     while (sfRenderWindow_isOpen(window)) {
-    if (sfClock_getElapsedTime(clock).microseconds > 1) {
+    if (sfClock_getElapsedTime(utils.movement).microseconds > 1) {
         sprite_move(&vector, &utils);
-        sfClock_restart(clock);
+        sfClock_restart(utils.movement);
     }
     if (sfClock_getElapsedTime(utils.animate).microseconds > 100000) {
         modify_rect(&utils);
@@ -68,8 +69,8 @@ void display_game()
     }
     sfRenderWindow_clear(window, sfBlack);
     sfSprite_setTextureRect(utils.sprite, utils.rect);
-    sfRenderWindow_drawSprite(window, utils.sprite, NULL);
     sfRenderWindow_drawSprite(window, utils.background, NULL);
+    sfRenderWindow_drawSprite(window, utils.sprite, NULL);
     sfRenderWindow_drawText(window, utils.score, NULL);
     sfRenderWindow_display(window);
     }
