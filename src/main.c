@@ -19,7 +19,7 @@ void do_loop(vect_t *vector, utils_t *utils, sfRenderWindow *window)
 {
     while (sfRenderWindow_isOpen(window)) {
     if (sfClock_getElapsedTime(utils->animate).microseconds > 100000) {
-        modify_rect(&utils);
+        modify_rect(utils);
         sfClock_restart(utils->animate);
     }
     while (sfRenderWindow_pollEvent(window, &utils->event)) {
@@ -28,7 +28,7 @@ void do_loop(vect_t *vector, utils_t *utils, sfRenderWindow *window)
             sfClock_destroy(utils->movement);
         }
     }
-    set_text(&vector, &utils);
+    set_text(vector, utils);
     sfRenderWindow_clear(window, sfBlack);
     sfSprite_setTextureRect(utils->sprite, utils->rect);
     sfRenderWindow_drawSprite(window, utils->background, NULL);

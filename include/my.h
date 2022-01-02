@@ -17,14 +17,16 @@
 #include <SFML/System/Types.h>
 #include "vect.h"
 #include "utils.h"
+#include <time.h>
 
+sfText *set_text(vect_t *vector, utils_t *utils);
 void my_putchar(char c);
 int my_putstr(char const *str);
 int my_strlen(char const *str);
 void hit_duck(sfVector2f pos, sfSprite *sprite, sfRenderWindow *window);
 char *my_strcat(char const *src1, char const *src2);
-void set_rect(sfIntRect *rect);
-void modify_rect(sfIntRect *rect);
+void set_rect(utils_t *utils);
+void modify_rect(utils_t *utils);
 int my_putstr(char const *str);
 sfSprite *set_background();
 char value(int nbr);
@@ -34,7 +36,7 @@ int my_put_nbr(int nb);
 void sprite_move(sfSprite *sprite, sfVector2f pos, sfVector2f move);
 char *decimaltobase(int nbr);
 void init_vect(vect_t *vector);
-void init_clocks(utils_t *clock);
-int main();
+void init_clock(utils_t *clock);
+sfRenderWindow *create_renderwindow(unsigned int width, unsigned int height, unsigned int bpp, char *title);
 
 #endif /* !MY_H_ */

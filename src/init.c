@@ -35,7 +35,7 @@ sfSprite *set_background(vect_t *vector, utils_t *utils)
     utils->background = set_sprite(vector, utils);
 }
 
-static sfRenderWindow *create_renderwindow(unsigned int width, unsigned int height, unsigned int bpp, char *title)
+sfRenderWindow *create_renderwindow(unsigned int width, unsigned int height, unsigned int bpp, char *title)
 {
     sfVideoMode video_mode = {width, height, bpp};
 
