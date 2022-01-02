@@ -15,6 +15,8 @@
 #include <SFML/System/Export.h>
 #include <SFML/System/Time.h>
 #include <SFML/System/Types.h>
+#include "vect.h"
+#include "utils.h"
 
 void my_putchar(char c);
 int my_putstr(char const *str);
@@ -31,6 +33,8 @@ int my_getnbr(char *str);
 int my_put_nbr(int nb);
 void sprite_move(sfSprite *sprite, sfVector2f pos, sfVector2f move);
 char *decimaltobase(int nbr);
+void init_vect(vect_t *vector);
+void init_clocks(utils_t *clock);
 int main();
 
 #endif /* !MY_H_ */

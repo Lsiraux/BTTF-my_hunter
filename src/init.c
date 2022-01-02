@@ -9,38 +9,42 @@
 
 
 
-sfText *set_text(sfVector2f pos, sfVector2f scale, int *i)
+sfText *set_text(vect_t *vector, utils_t *utils)
 {
-    sfText *score;
-    sfFont *font;
-    font = sfFont_createFromFile("bitmap.TTF");
-    score = sfText_create();
-    sfText_setPosition(score, pos);
-    sfText_setColor(score, sfWhite);
-    sfText_setScale(score, scale);
-    sfText_setString(score, my_strcat("points: ", "0"));
-    sfText_setFont(score, font);
+    utils->font = sfFont_createFromFile("bitmap.TTF");
+    utils->score = sfText_create();
+    sfText_setPosition(utils->score, vector->pos);
+    sfText_setColor(utils->score, sfWhite);
+    sfText_setScale(utils->score, vector->scale);
+    sfText_setString(utils->score, my_strcat("points: ", "0"));
+    sfText_setFont(utils->score, utils->font);
 }
 
-sfText *set_text2(sfVector2f pos, sfVector2f scale)
+sfSprite *set_sprite(vect_t *vector, utils_t *utils)
 {
-    sfText *score;
-    sfFont *font;
-    font = sfFont_createFromFile("bitmap.TTF");
-    score = sfText_create();
-    sfText_setPosition(score, pos);
-    sfText_setColor(score, sfBlue);
-    sfText_setScale(score, scale);
-    sfText_setString(score, "CATCH RIO");
-    sfText_setFont(score, font);
+    utils->sprite = sfSprite_create();
+
+    sfSprite_setScale(utils->sprite, vector->scale);
+    sfSprite_setPosition(utils->sprite, vector->pos);
+    sfSprite_setTexture(utils->sprite, utils->texture, sfFalse);
 }
 
-sfSprite *set_sprite(sfVector2f my_pos, sfVector2f scale, sfTexture *texture)
+sfSprite *set_background(vect_t *vector, utils_t *utils)
 {
-    sfSprite *sprite = sfSprite_create();
-
-    sfSprite_setScale(sprite, scale);
-    sfSprite_setPosition(sprite, my_pos);
-    sfSprite_setTexture(sprite, texture, sfFalse);
-    return sprite;
+    utils->backimage = sfTexture_createFromFile("background_sheet.png", NULL);
+    utils->background = set_sprite(vector, utils);
 }
+
+static sfRenderWindow *create_renderwindow(unsigned int width, unsigned int height, unsigned int bpp, char *title)
+{
+    sfVideoMode video_mode = {width, height, bpp};
+
+    return (sfRenderWindow_create(video_mode, title, sfResize | sfClose, NULL));
+}
+
+void init_clock(utils_t *clock)
+{
+    clock->animate = sfClock_create();
+    clock->movement = sfClock_create();
+}
+

@@ -7,20 +7,20 @@
 
 #include "my.h"
 
-void set_rect(sfIntRect *rect)
+void set_rect(utils_t *utils)
 {
-    rect->top = 0;
-    rect->left = 0;
-    rect->width = 1100;
-    rect->height = 1100;
+    utils->rect.top = 0;
+    utils->rect.left = 0;
+    utils->rect.width = 110;
+    utils->rect.height = 110;
 }
 
-void modify_rect(sfIntRect *rect)
+void modify_rect(utils_t *utils)
 {
-    if (rect->left == 7700) {
-        rect->left = 0;
+    if (utils->rect.left == 220) {
+        utils->rect.left = 0;
     }
-    else if (rect->left != 7700) {
-        rect->left = (rect->left) + 1100;
+    else if (utils->rect.left != 220) {
+        utils->rect.left = (utils->rect.left) + 110;
     }
 }
